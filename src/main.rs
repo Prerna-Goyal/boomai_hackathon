@@ -322,12 +322,31 @@ impl eframe::App for EcgMonitor {
 async fn main() -> Result<(), eframe::Error> {
     tracing_subscriber::fmt::init();
 
+    // let options = eframe::NativeOptions {
+    //     viewport: egui::ViewportBuilder::default()
+    //         .with_inner_size([WINDOW_WIDTH, WINDOW_HEIGHT])
+    //         .with_min_inner_size([800.0, 600.0])
+    //         .with_title("ECG Monitor - Raspberry Pi")
+    //         .with_icon(eframe::icon_data::from_png_bytes(&[]).unwrap_or_default()),
+    //     ..Default::default()
+    // };
+
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_inner_size([WINDOW_WIDTH, WINDOW_HEIGHT])
             .with_min_inner_size([800.0, 600.0])
             .with_title("ECG Monitor - Raspberry Pi")
             .with_icon(eframe::icon_data::from_png_bytes(&[]).unwrap_or_default()),
+
+        // Force GL (OpenGL ES 2.0) instead of WGPU — Raspberry Pi compatible
+        renderer: eframe::Renderer::Glow,
+
+        // Disable MSAA to avoid unsupported framebuffer configs
+        multisampling: 0,
+
+        // Force vsync to reduce GPU load on Raspberry Pi
+        vsync: true,
+
         ..Default::default()
     };
 
