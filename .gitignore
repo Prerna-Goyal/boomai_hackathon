@@ -1,0 +1,90 @@
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+*.out
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Documentation builds
+/docs/_build/
+/docs/site/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Local configuration
+config.local.*
+settings.local.*
+
+# Screenshots and test outputs
+screenshots/
+test-results/
+
+# Performance data
+*.cpuprofile
+*.heapprofile
+
+# Service files (generated)
+*.service.tmp
+
+# ECG data files (optional - uncomment to ignore)
+# *.edf
+# *.qrs
+# *.dat
+# *.hea
+# *.rec

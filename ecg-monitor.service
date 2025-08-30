@@ -1,0 +1,41 @@
+[Unit]
+Description=ECG Monitor - Real-time ECG Display for Raspberry Pi
+Documentation=file:///home/pi/ecg3/README.md
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/ecg3
+Environment="DISPLAY=:0"
+Environment="RUST_LOG=warn"
+Environment="WINIT_UNIX_BACKEND=x11"
+Environment="MESA_GL_VERSION_OVERRIDE=3.3"
+Environment="LIBGL_ALWAYS_INDIRECT=0"
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/pi/ecg3/target/release/ecg3
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Performance optimizations
+Nice=-10
+IOSchedulingClass=1
+IOSchedulingPriority=4
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/ecg3
+
+# Resource limits
+LimitNOFILE=4096
+LimitNPROC=512
+
+[Install]
+WantedBy=graphical-session.target
